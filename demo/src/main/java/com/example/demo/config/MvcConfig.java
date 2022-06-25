@@ -12,5 +12,3 @@ public class MvcConfig implements WebMvcConfigurer {
 
     }
 }
-
-    //TODO когда выключен не работает

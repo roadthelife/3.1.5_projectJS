@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService {
 
         log.debug("Pass: {}", user.getPassword());
 
-//        userRepository.saveAndFlush(converter.convert(user));
         userRepository.saveAndFlush(user);
     }
 
@@ -42,7 +41,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User loadUserByUsername(@NonNull String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
-//                .map(converter::convert)
                 .orElseThrow(() -> {
                     throw new UsernameNotFoundException(String.format("User [%s] not found", username));
                 });
@@ -52,8 +50,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userRepository.findAll();
-//                .stream().map(converter::convert)
-//                .collect(Collectors.toList());
     }
 
 
@@ -61,7 +57,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User getUserById(long id) {
         return userRepository.findById(id)
-//                .map(converter::convert)
                 .orElseThrow(() -> new UserNotFoundException(String.format("User bu id [%s] not found", id)));
     }
 
@@ -69,7 +64,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User getUserByUsername(@NonNull String username) {
         return userRepository.findByUsername(username)
-//                .map(converter::convert)
                 .orElseThrow(() -> new UserNotFoundException(String.format("User [%s] not found", username)));
     }
 
@@ -100,7 +94,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void updateUser(User user) {
-//        userRepository.saveAndFlush(converter.convert(user));
         userRepository.saveAndFlush(user);
     }
 
