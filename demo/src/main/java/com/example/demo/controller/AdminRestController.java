@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.service.impls.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +10,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 public class AdminRestController {
 
     private final UserServiceImpl userService;
-
 
 
     @GetMapping("/api/principal")
@@ -48,9 +51,7 @@ public class AdminRestController {
 
     @PutMapping("/api/{id}")
     public User updateUser(@RequestBody User user, @PathVariable("id") long id) {
-        //roleRepository.saveAll(user.getRoles());
         user.setRoles(userService.getRoles(userService.rolesToId(user.getRoles())));
-//        updateUserService.setPassword(user, id);
         userService.updateUser(user);
         return user;
     }
@@ -58,5 +59,11 @@ public class AdminRestController {
     @DeleteMapping("/api/{id}")
     public void deleteUser(@PathVariable long id) {
         userService.deleteUserById(id);
+    }
+
+    Set<Role> rolesIdToRoles(Long[] rolesId) {
+        return Arrays.stream(rolesId)
+                .map(userService::getRoleById)
+                .collect(Collectors.toSet());
     }
 }

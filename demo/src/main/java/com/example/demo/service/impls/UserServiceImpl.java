@@ -26,11 +26,6 @@ public class UserServiceImpl implements UserService {
 
     private final RoleRepository roleRepository;
 
-//    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
-//        this.userRepository = userRepository;
-//        this.roleRepository = roleRepository;
-//    }
-
     @Override
     @Transactional
     public void saveUser(@NonNull User user) {
@@ -110,13 +105,13 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public Set<Role> getRoles (ArrayList<Long> roles){
+    public Set<Role> getRoles(ArrayList<Long> roles) {
         return roleRepository.findByIdIn(roles);
     }
 
-    public ArrayList <Long> rolesToId (Set<Role> roles){
+    public ArrayList<Long> rolesToId(Set<Role> roles) {
         ArrayList<Long> rolesId = new ArrayList<>();
-        for (Role role:roles){
+        for (Role role : roles) {
             rolesId.add(Long.valueOf(role.getName()));
         }
         return rolesId;
