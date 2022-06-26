@@ -21,9 +21,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <a style="color: white;text-align: left;">
             <strong>
-              <th:block th:each="user:${activeUser}" th:text="${activeUser.getUsername()}"></th:block>
+              <th:block th:each="user:${user}" th:text="${user.getUsername()}"></th:block>
             </strong>
-            <th:block th:each="user:${activeUser}" th:text="'with roles: '+ ${activeUser.getRolesView}"></th:block>
+            <th:block th:each="user:${user}" th:text="'with roles: '+ ${user.getRolesView}"></th:block>
           </a>
 
 
@@ -91,13 +91,13 @@
         </thead>
         <!--Тело таблицы-->
         <tbody>
-        <tr th:each="user:${activeUser}">
-          <td th:text="${activeUser.getId()}" style="text-align: center;">ID </td>
-          <td th:text="${activeUser.getFirstName()}" style="text-align: center;"> Admin name </td>
-          <td th:text="${activeUser.getLastName()}" style="text-align: center;"> Admin LastName </td>
-          <td th:text="${activeUser.getAge()}" style="text-align: center;"> Admin age </td>
-          <td th:text="${activeUser.getUsername()}" style="text-align: center;"> Admin Email </td>
-          <td th:text="${activeUser.getRolesView()}" style="text-align: center;"> Role </td>
+        <tr th:each="user:${user}">
+          <td th:text="${user.getId()}" style="text-align: center;">ID </td>
+          <td th:text="${user.getFirstName()}" style="text-align: center;"> Admin name </td>
+          <td th:text="${user.getLastName()}" style="text-align: center;"> Admin LastName </td>
+          <td th:text="${user.getAge()}" style="text-align: center;"> Admin age </td>
+          <td th:text="${user.getUsername()}" style="text-align: center;"> Admin Email </td>
+          <td th:text="${user.getRolesView()}" style="text-align: center;"> Role </td>
 
         </tr>
 

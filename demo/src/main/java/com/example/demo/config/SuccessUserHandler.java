@@ -23,7 +23,7 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
         } else if (roles.contains("ROLE_USER")) {
             httpServletResponse.sendRedirect("/info");
         } else {
-            httpServletResponse.sendRedirect("/");
+            httpServletResponse.sendRedirect("/login");
         }
     }
 }

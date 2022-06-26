@@ -102,11 +102,5 @@ public class UserServiceImpl implements UserService {
         return roleRepository.findByIdIn(roles);
     }
 
-    public ArrayList<Long> rolesToId(Set<Role> roles) {
-        ArrayList<Long> rolesId = new ArrayList<>();
-        for (Role role : roles) {
-            rolesId.add(Long.valueOf(role.getName()));
-        }
-        return rolesId;
-    }
+
 }
